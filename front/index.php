@@ -16,7 +16,7 @@
     <div class="container pt-5 pb-5">
       <div class="row">
         <div class="col">
-          <h2><a href="#" class="top">OSIshareApp</a></h2>
+          <h2><a href="#top" class="top" id="top">OSIShareApp</a></h2>
         </div>
         <div class="col-md-auto">
           <a href="#">SignUp</a>
