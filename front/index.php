@@ -1,3 +1,8 @@
+<?php
+session_start();
+$isUser = $_SESSION["login_user"];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,10 +24,16 @@
           <h2><a href="#top" class="top" id="top">OSIShareApp</a></h2>
         </div>
         <div class="col-md-auto">
+          <?php if (!isset($isUser)) : ?>
           <a href="#">SignUp</a>
+          <?php endif; ?>
         </div>
         <div class="col-md-auto">
-          <a href="#">SignIn</a>
+          <?php if (!isset($isUser)) : ?>
+          <a href="./login_form.php">SignIn</a>
+          <?php else : ?>
+          <a href="../front/mypage.php"><?php echo $isUser['name'] ?>のMyPageへ</a>
+          <?php endif; ?>
         </div>
       </div>
     </div>
@@ -30,42 +41,42 @@
 
   <!-- Main -->
   <main>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="card" style="width: 100%;">
-            <img src="../images/image2.jpg" alt="" class="bd-placeholder-img card-img-top" width="100%" height="200">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
+    <div class="container main">
+      <div class="card">
+        <img src="../images/image2.jpg" alt="" class="bd-placeholder-img card-img-top" width="100%" height="200">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
-        <div class="col-sm-4">
-          <div class="card" style="width: 100%;">
-            <img src="../images/image3.jpg" alt="" class="bd-placeholder-img card-img-top" width="100%" height="200">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
+      </div>
+      <div class="card">
+        <img src="../images/image3.jpg" alt="" class="bd-placeholder-img card-img-top" width="100%" height="200">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
-        <div class="col-sm-4">
-          <div class="card" style="width: 100%;">
-            <img src="../images/image1.jpg" alt="" class="bd-placeholder-img card-img-top" width="100%" height="200">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
+      </div>
+      <div class="card">
+        <img src="../images/image1.jpg" alt="" class="bd-placeholder-img card-img-top" width="100%" height="200">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
-
+      </div>
+      <div class="card">
+        <img src="../images/image1.jpg" alt="" class="bd-placeholder-img card-img-top" width="100%" height="200">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
       </div>
     </div>
   </main>
