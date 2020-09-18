@@ -62,4 +62,45 @@ class UserLogic
     session_destroy();
     return true;
   }
+
+  /**
+   * idから投稿を取得
+   * @param int $$id
+   * @return array|bool $posts|false
+   */
+  public static function getPost($id)
+  {
+    $sql = "SELECT * FROM post WHERE contributer_id = ?";
+    $arr = [];
+    $arr[] = $id;
+
+    try {
+      $stmt = connect()->prepare($sql);
+      $stmt->execute($arr);
+      $posts = $stmt->fetchAll();
+      return $posts;
+    } catch (Exception $e) {
+      echo $e;
+      return false;
+    }
+  }
+
+  /**
+   * 投稿をすべて取得
+   * @return array|bool $posts|false
+   */
+  public static function getAllPost()
+  {
+    $sql = "SELECT * FROM post";
+
+    try {
+      $stmt = connect()->prepare($sql);
+      $stmt->execute();
+      $posts = $stmt->fetchAll();
+      return $posts;
+    } catch (Exception $e) {
+      echo $e;
+      return false;
+    }
+  }
 }

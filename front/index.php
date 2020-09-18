@@ -1,6 +1,8 @@
 <?php
 session_start();
+require_once('../function/UserLogic.php');
 $isUser = $_SESSION["login_user"];
+$posts = UserLogic::getAllPost();
 ?>
 
 <!DOCTYPE html>
@@ -42,45 +44,19 @@ $isUser = $_SESSION["login_user"];
   <!-- Main -->
   <main>
     <div class="container main">
+      <?php foreach ($posts as $post) : ?>
       <div class="card">
-        <img src="../images/image2.jpg" alt="" class="bd-placeholder-img card-img-top" width="100%" height="200">
+        <img src="../images/<?php echo $post["image"]; ?>" alt="" class="bd-placeholder-img card-img-top" width="100%"
+          height="200">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
+          <h5 class="card-title"><?php echo $post["title"]; ?></h5>
+          <p class="card-text"><?php echo $post["text"]; ?></p>
           <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
-      <div class="card">
-        <img src="../images/image3.jpg" alt="" class="bd-placeholder-img card-img-top" width="100%" height="200">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-      <div class="card">
-        <img src="../images/image1.jpg" alt="" class="bd-placeholder-img card-img-top" width="100%" height="200">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-      <div class="card">
-        <img src="../images/image1.jpg" alt="" class="bd-placeholder-img card-img-top" width="100%" height="200">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
+      <?php endforeach; ?>
     </div>
   </main>
-
 
   <script src=" https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
