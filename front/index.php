@@ -1,7 +1,9 @@
 <?php
 session_start();
 require_once('../function/UserLogic.php');
-$isUser = $_SESSION["login_user"];
+if (isset($_SESSION["login_user"])) {
+  $isUser = $_SESSION["login_user"];
+}
 $posts = UserLogic::getAllPost();
 ?>
 
