@@ -2,14 +2,15 @@
 require_once('../function/dbconnect.php');
 ini_set('display_errors', "On");
 
-/**
- * ログイン処理
- * @param string $email $password
- * @param string $passwd
- * @return bool $result
- */
+
 class UserLogic
 {
+  /**
+   * ログイン処理
+   * @param string $email $password
+   * @param string $passwd
+   * @return bool $result
+   */
   public static function login($email, $password)
   {
     $result = false;
@@ -32,6 +33,31 @@ class UserLogic
     $_SESSION["login_user"] = $user;
     $result = true;
     return $result;
+  }
+
+  /**
+   * 新規登録処理
+   * @param string $uerData
+   * @return bool true|false
+   */
+  public static function signup($userData)
+  {
+    $result = false;
+    $sql = "INSERT INTO users(name, email, password) VALUES (?,?,?)";
+
+    $arr = [];
+    $arr[] = $userData["username"];
+    $arr[] = $userData["email"];
+    $arr[] = $userData["password"];
+
+    try {
+      $stmt = connect()->prepare($sql);
+      $result = $stmt->execute($arr);
+      return $result;
+    } catch (Exception $e) {
+      echo $e;
+      return $result;
+    }
   }
 
   /**

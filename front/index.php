@@ -29,7 +29,7 @@ $posts = UserLogic::getAllPost();
         </div>
         <div class="col-md-auto">
           <?php if (!isset($isUser)) : ?>
-          <a href="#">SignUp</a>
+          <a href="./signup_form.php">SignUp</a>
           <?php endif; ?>
         </div>
         <div class="col-md-auto">
@@ -45,6 +45,9 @@ $posts = UserLogic::getAllPost();
 
   <!-- Main -->
   <main>
+    <div class="container mb-5">
+      <h2>全員の投稿</h2>
+    </div>
     <div class="container main">
       <?php foreach ($posts as $post) : ?>
       <div class="card">

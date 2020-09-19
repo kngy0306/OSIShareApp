@@ -37,6 +37,9 @@ $posts = UserLogic::getPost($isUser["id"]);
   </header>
 
   <main>
+    <div class="container mb-5">
+      <h2><?php echo $isUser["name"]; ?>の投稿</h2>
+    </div>
     <div class="container main">
       <?php foreach ($posts as $post) : ?>
       <div class="card">
