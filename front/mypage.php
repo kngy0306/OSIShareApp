@@ -28,6 +28,7 @@ $posts = UserLogic::getPost($isUser["id"]);
           <h5><?php echo $isUser["name"]; ?>のマイページ</h5>
         </div>
         <div class="col-md-auto">
+          <h2><a href="./create_form.php">記事作成</a></h2>
           <form action="../function/logout.php" method="POST">
             <input type="submit" name="logout" value="ログアウト">
           </form>

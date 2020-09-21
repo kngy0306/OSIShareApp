@@ -129,4 +129,30 @@ class UserLogic
       return false;
     }
   }
+
+  /**
+   * 新規登録処理
+   * @param string|int $contributer_id, $title, $text, $image
+   * @return bool true|false
+   */
+  public static function create($contributer_id, $title, $text, $image)
+  {
+    $result = false;
+    $sql = "INSERT INTO post(contributer_id, title, text, image) VALUES (?,?,?,?)";
+
+    $arr = [];
+    $arr[] = $contributer_id;
+    $arr[] = $title;
+    $arr[] = $text;
+    $arr[] = $image;
+
+    try {
+      $stmt = connect()->prepare($sql);
+      $result = $stmt->execute($arr);
+      return $result;
+    } catch (Exception $e) {
+      echo $e;
+      return $result;
+    }
+  }
 }
